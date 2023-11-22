@@ -1,0 +1,24 @@
+/* Adicione estilos gerais aqui */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  /* Estilos para a tabela de transações */
+  .table {
+    margin-top: 20px;
+  }
+  
+  /* Estilo para o formulário de upload */
+  form {
+    margin-top: 20px;
+  }
+  
+  /* Estilos para botões */
+  .btn {
+    margin-top: 10px;
+  }
+  
