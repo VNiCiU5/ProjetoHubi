@@ -1,40 +1,40 @@
-<!-- views/transactions.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transactions</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Transações</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Transactions</h1>
-    
-    <% if (transactions.length > 0) { %>
-        <table>
-            <thead>
-                <tr>
-                    <th>Producer</th>
-                    <th>Affiliate</th>
-                    <th>Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                <% transactions.forEach(transaction => { %>
-                    <tr>
-                        <td><%= transaction.producer %></td>
-                        <td><%= transaction.affiliate %></td>
-                        <td><%= transaction.value %></td>
-                    </tr>
-                <% }); %>
-            </tbody>
-        </table>
 
-        <p>Total value of transactions: <%= transactions.reduce((acc, curr) => acc + curr.value, 0) %></p>
-    <% } else { %>
-        <p>No transactions available.</p>
-    <% } %>
-    
-    <a href="/">Back to Upload</a>
+<div class="container mt-5">
+  <h2>Lista de Transações</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Produtor</th>
+        <th scope="col">Afiliado</th>
+        <th scope="col">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% transactions.forEach(transaction => { %>
+        <tr>
+          <td><%= transaction.producer %></td>
+          <td><%= transaction.affiliate %></td>
+          <td>
+            <% if (typeof transaction.value === 'number' && !isNaN(transaction.value)) { %>
+              R$ <%= transaction.value.toFixed(2) %>
+            <% } else { %>
+              N/A
+            <% } %>
+          </td>
+        </tr>
+      <% }); %>
+    </tbody>
+  </table>
+</div>
+
 </body>
 </html>
