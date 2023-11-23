@@ -13,7 +13,8 @@ app.use(express.static('views'));
 app.use(express.urlencoded({ extended: true }));
 
 const upload = multer({ dest: 'uploads/' });
-const db = new sqlite3.Database('transactions.db');
+const db = new sqlite3.Database(process.env.DB_PATH || 'transactions.db');
+
 
 db.serialize(() => {
   db.run('CREATE TABLE IF NOT EXISTS transactions (producer TEXT, affiliate TEXT, value REAL)');
